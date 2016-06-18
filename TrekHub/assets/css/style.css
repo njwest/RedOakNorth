@@ -1,0 +1,38 @@
+nav#header {
+	margin-bottom: 15px;
+}
+
+.brand-logo {
+	margin-left: 15px;
+}
+
+div#queryOrigin {
+	height: 150px;
+}
+
+div#map {
+	height: 400px;
+}
+
+div#weathercard {
+	height: 150px;
+	display: none;
+}
+
+div#rightpanel {
+	height: 100%;
+}
+
+div#calendar {
+	height: 400px;
+	margin-top: 100px;
+}
+
+div#notes {
+	height: 400px;
+	margin-top: 100px;
+}
+
+#footer {
+	margin-top: 100px;
+}

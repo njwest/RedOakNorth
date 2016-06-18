@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="assets/jquery/jquery-2.2.3.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+	
+<body>
+
+<div class="container">
+  <nav id="header">
+    <div class="nav-wrapper #ef5350 red lighten-1">
+      <a href="#" class="brand-logo">Trek-Hub</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons">location_on</i></a></li>
+        <li><a href="#"><i class="material-icons">info</i></a></li>
+        <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
+	</div>
+  </nav>
+	<div class="row">
+		<div id="queryOrigin" class="col s12">
+       		<div class="input-field col s3">
+         			<input id="origin" type="text">
+         		    <label for="origin">Origin</label>
+                <button class="btn waves-effect waves-light" type="submit" id="submitSearch">Submit</button>
+			</div>
+         		<div class="input-field col s3">
+         			<input id="destination" type="text">
+         			<label for="destination">Destination</label>    
+          		</div>
+         	<div id="weathercard" class="row">
+      			<div class="col s4 offset-s2">
+       				 <div id="card" class="card-panel teal z-depth-4">
+          				<p class="white-text center-align"><b>Destination Weather: <span id="temp" class="white-text"> 
+          			 </span></b></p>
+          			<p class="white-text center-align"><i><span id="comment" class="white-text"></span></i></p>
+        			</div>
+      			</div>
+    		</div> 	
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="map" class="col s6 z-depth-4">
+		</div> 
+
+		<div id="slidingcard" class="col s5 offset-s1">
+			<div class="card z-depth-4">
+				<div class="card-image waves-effect waves-block waves-light">
+      				<img class="activator" src="assets/images/directions.jpg">
+   				</div>
+    		<div class="card-content #f44336 red">
+      			<span class="card-title activator white-text">Directions<i class="material-icons right">more_vert</i></span>
+   			</div>
+    		<div class="card-reveal #ffffff white">
+      			<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+      			<div id="rightpanel">
+      			</div>
+    		</div>
+			</div>
+		</div>
+  	</div>
+
+  <div class="row">
+      <div id="calendar" class="col s5 z-depth-4 #ffebee red lighten-5">
+          <i class="medium material-icons">assignment</i>
+      </div>
+      <div id="notes" class="col s5 offset-s2 z-depth-4 #ffebee red lighten-5">
+          <i class="medium material-icons">assignment</i>
+      </div>
+  </div>
+
+</div>
+
+</body>
+
+  <footer id="footer" class="page-footer #ef5350 red lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text"></h5>
+                <p class="grey-text text-lighten-4"></p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text"></h5>
+                <ul>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright #f44336 red">
+            <div class="container">
+            Copyright 2016
+            </div>
+          </div>
+</footer>
+
+<script>
+
+var APIKey = "6e5a54722e9f12c1fb105d9b1b0485f9";
+
+$('#submitSearch').on('click', function() {
+    
+    var location = $('#destination').val().trim();
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + APIKey;
+
+   $("div#weathercard").fadeIn(); 
+
+   $.ajax({
+            url: queryURL,
+            method: 'GET'
+            })
+    .done(function(response) {
+      console.log(response);
+
+       var K = response.main.temp;
+       var F = (K - 273.15) * 1.80 + 32;
+       var temp = Math.round(F);
+       var condition = response.weather[0].description;
+      
+      $('#temp').text(temp + " degrees & " + condition);
+
+      if (temp >= 80) {
+        $('#comment').text("Dress lightly! It's hot out!");
+      }
+
+      if (temp >= 65 && temp < 80) {
+        $('#comment').text("Dress for mild weather!");
+      }
+
+      if (temp >= 50 && temp < 65) {
+        $('#comment').text("Don't forget to take a jacket!")
+      }
+
+      if (temp < 50) {
+        $('#comment').text("Dress warmly! It's chilly!");
+      }
+    })
+})
+
+function initMap() {
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: 40.4862, lng: -74.4518},
+      zoom: 10
+    });
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('rightpanel'));
+
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+
+    var onChangeHandler = function () {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+    };
+    document.getElementById('submitSearch').addEventListener('click', onChangeHandler);
+  }
+      
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+		var start = $('#origin').val().trim();
+		var end = $('#destination').val().trim();
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode.DRIVING
+       }, function(response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+</script>
+	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClUkAANYUbEx1dI5uNBpXNrn8Ae4QAjNQ&callback=initMap">
+	  </script>
+
+</html>
