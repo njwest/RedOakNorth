@@ -1,0 +1,35 @@
+
+<html>
+<head>
+	<title>Wikipedia API</title>
+</head>
+<body>
+
+	<div class="search-bar">
+	      <form>
+	        <div class="input-field">
+	          <input id="search" type="search" required>Wikipedia Search
+	          <label for="search"><div class="material-icons"></div></label>
+	        </div>
+	      </form>
+    	</div></div>
+    	
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+
+
+ 
+
+	var queryURL = "https://www.mediawiki.org/api/rest_v1/?spec";
+
+		$.ajax({url: queryURL, method: 'GET'})
+		.done(function(response) {
+			console.log(response);
+		}); 
+
+</script>
+
+
+</body>
+</html>
