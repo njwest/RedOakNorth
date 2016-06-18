@@ -2,8 +2,15 @@ nav#header {
 	margin-bottom: 15px;
 }
 
+.nav-wrapper{
+	background-color: #ef5350;
+}
+
 .brand-logo {
-	margin-left: 175px;
+}
+
+#itemInput{
+	width: 75%;
 }
 
 div#queryOrigin {
@@ -32,12 +39,10 @@ div#rightpanel {
 	height: 100%;
 }
 
-div#calendar {
-	height: 400px;
+div#schedule {
 }
 
 div#notes {
-	height: 400px;
 	margin-top:10px;
 }
 

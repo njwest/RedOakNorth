@@ -3,26 +3,25 @@
 <head>
   <title>Trek-Hub</title>
 	<script src="assets/jquery/jquery-2.2.3.js"></script>
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	  
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
 </head>
 	
 <body>
 
 <nav id="header">
-    <div class="nav-wrapper #ef5350 red lighten-1">
+  <div class="container">
+    <div class="nav-wrapper">
       <a href="#" class="brand-logo">Trek-Hub</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#"><i class="material-icons">location_on</i></a></li>
         <li><a href="#"><i class="material-icons">info</i></a></li>
         <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <div class="container">
@@ -34,10 +33,10 @@
         <label for="origin">Origin</label>
         <button class="btn waves-effect waves-light" type="submit" id="submitSearch">Submit</button>
 			</div>
-         		<div class="input-field col s3">
-         			<input id="destination" type="text">
-         			<label for="destination">Destination</label>    
-          	</div>
+      <div class="input-field col s3">
+         <input id="destination" type="text">
+         	<label for="destination">Destination</label>    
+      </div>
          	<div id="weathercard" class="row">
       			<div class="col m4 s12 offset-m2">
        				 <div id="card" class="card-panel teal z-depth-4">
@@ -49,7 +48,7 @@
     		</div> 	
 		</div>
 	</div>
-  <!-- Row 2 - Map/Directions, Schedule -->
+  <!-- Row 2 - Map/Directions, Schedule & Notes -->
 	<div class="row">
     <!-- Map & Directions Card-->
     <div class="card-panel col m6 s12 z-depth-4" id="mapCard">
@@ -77,14 +76,37 @@
       </div>
 
     </div>
+        <!-- Schedule -->
+        <div id="schedule" class="col m5 s12 z-depth-4 #ffebee red lighten-5 offset-m1">
+          
+          
+          <h4><i class="small material-icons">assignment</i>Schedule </h4>
 
-        <div id="calendar" class="col m5 s12 z-depth-4 #ffebee red lighten-5 offset-m1">
-          <i class="medium material-icons">assignment</i>
+          <div class="card-panel">
+          <form>
+            <input type="text" id="itemInput">
+             <!-- <input type="submit" value="+" class="btn-floating btn-medium waves-effect waves-light teal" id="addItem"> -->
+            <a class="btn-floating btn-medium waves-effect waves-light red" type="submit" id="addItem"><i class="material-icons">add</i></a>
+
+          </form>
+
+            <ol>
+              <li>hello</li>
+              <li>2</li>          
+            </ol>
+
+          </div>
         </div>
 
+        <!-- Notes -->
         <div id="notes" class="col m5 s12 offset-m1 z-depth-4 #ffebee red lighten-5">
           <i class="medium material-icons">assignment
-          </i>
+          </i> 
+          <div class="card teal">
+            <ol>
+              <li></li>
+              <li></li>
+            </ol> 
       </div>
 
     </div>
@@ -112,6 +134,7 @@
             Copyright 2016 Red Oak North
             </div>
           </div>
+
 </footer>
 
 <script>
