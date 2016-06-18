@@ -3,7 +3,7 @@ nav#header {
 }
 
 .brand-logo {
-	margin-left: 15px;
+	margin-left: 175px;
 }
 
 div#queryOrigin {
@@ -12,6 +12,15 @@ div#queryOrigin {
 
 div#map {
 	height: 400px;
+}
+
+div#mapCard{
+/*	background-color:#f44336;
+*/
+	background-color: teal;
+}
+
+div#slidingcard{
 }
 
 div#weathercard {
@@ -25,12 +34,11 @@ div#rightpanel {
 
 div#calendar {
 	height: 400px;
-	margin-top: 100px;
 }
 
 div#notes {
 	height: 400px;
-	margin-top: 100px;
+	margin-top:10px;
 }
 
 #footer {

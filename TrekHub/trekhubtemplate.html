@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  <title>Trek-Hub</title>
 	<script src="assets/jquery/jquery-2.2.3.js"></script>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -15,29 +15,31 @@
 	
 <body>
 
-<div class="container">
-  <nav id="header">
+<nav id="header">
     <div class="nav-wrapper #ef5350 red lighten-1">
       <a href="#" class="brand-logo">Trek-Hub</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#"><i class="material-icons">location_on</i></a></li>
         <li><a href="#"><i class="material-icons">info</i></a></li>
         <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
-	</div>
-  </nav>
+    </div>
+</nav>
+
+<div class="container">
+  <!-- Row 1 - Destination Input, Weather -->
 	<div class="row">
 		<div id="queryOrigin" class="col s12">
-       		<div class="input-field col s3">
-         			<input id="origin" type="text">
-         		    <label for="origin">Origin</label>
-                <button class="btn waves-effect waves-light" type="submit" id="submitSearch">Submit</button>
+      <div class="input-field col m3 s12">
+        <input id="origin" type="text">
+        <label for="origin">Origin</label>
+        <button class="btn waves-effect waves-light" type="submit" id="submitSearch">Submit</button>
 			</div>
          		<div class="input-field col s3">
          			<input id="destination" type="text">
          			<label for="destination">Destination</label>    
-          		</div>
+          	</div>
          	<div id="weathercard" class="row">
-      			<div class="col s4 offset-s2">
+      			<div class="col m4 s12 offset-m2">
        				 <div id="card" class="card-panel teal z-depth-4">
           				<p class="white-text center-align"><b>Destination Weather: <span id="temp" class="white-text"> 
           			 </span></b></p>
@@ -47,36 +49,45 @@
     		</div> 	
 		</div>
 	</div>
-
+  <!-- Row 2 - Map/Directions, Schedule -->
 	<div class="row">
-		<div id="map" class="col s6 z-depth-4">
-		</div> 
+    <!-- Map & Directions Card-->
+    <div class="card-panel col m6 s12 z-depth-4" id="mapCard">
+      <!-- Map -->
+  		<div id="map" class="card">
+  		</div>
+      <!-- Directions -->
+      <div id="slidingcard">
+        <div class="card" id="slidingcard">
 
-		<div id="slidingcard" class="col s5 offset-s1">
-			<div class="card z-depth-4">
-				<div class="card-image waves-effect waves-block waves-light">
-      				<img class="activator" src="assets/images/directions.jpg">
-   				</div>
-    		<div class="card-content #f44336 red">
-      			<span class="card-title activator white-text">Directions<i class="material-icons right">more_vert</i></span>
-   			</div>
-    		<div class="card-reveal #ffffff white">
-      			<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-      			<div id="rightpanel">
-      			</div>
-    		</div>
-			</div>
-		</div>
-  	</div>
+          <div class="card-content #f44336 red">
+              <span class="card-title activator white-text">Directions<i class="material-icons right">more_vert</i>
+              </span>
+          </div>
 
-  <div class="row">
-      <div id="calendar" class="col s5 z-depth-4 #ffebee red lighten-5">
-          <i class="medium material-icons">assignment</i>
+          <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="assets/images/directions.jpg">
+          </div>
+          <div class="card-reveal #ffffff white">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              <div id="rightpanel">
+              </div>
+          </div>
+        </div>
       </div>
-      <div id="notes" class="col s5 offset-s2 z-depth-4 #ffebee red lighten-5">
+
+    </div>
+
+        <div id="calendar" class="col m5 s12 z-depth-4 #ffebee red lighten-5 offset-m1">
           <i class="medium material-icons">assignment</i>
+        </div>
+
+        <div id="notes" class="col m5 s12 offset-m1 z-depth-4 #ffebee red lighten-5">
+          <i class="medium material-icons">assignment
+          </i>
       </div>
-  </div>
+
+    </div>
 
 </div>
 
@@ -98,7 +109,7 @@
           </div>
           <div class="footer-copyright #f44336 red">
             <div class="container">
-            Copyright 2016
+            Copyright 2016 Red Oak North
             </div>
           </div>
 </footer>
