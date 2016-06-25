@@ -33,8 +33,8 @@ $(function(){
 
     schedClose.attr("data-key", child.key());
 
-    schedClose.addClass("checkbox");
-    schedClose.append("X");
+    schedClose.addClass("checkbox btn-floating btn-small waves-effect waves-light blue");
+    schedClose.append("-");
     schedItem = schedItem.prepend(schedClose);
 
     $("#sched").append(schedItem);

@@ -7,13 +7,10 @@
 	<script src="assets/jquery/jquery-2.2.3.js"></script>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-	
-	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	  
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link rel="stylesheet" type="text/css" href="assets/css/jquery.timepicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/jquery.timepicker.css">
 
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 	<body>
   <header>
@@ -32,11 +29,15 @@
           <label for="destination">Destination</label>  
           <button class="btn waves-effect waves-light #d81b60 pink darken-1" type="submit" id="submitSearch">Submit</button>  
         </div>
-
+        </br>
         <div>
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Schedule</a>
         </div>
-
+          
+<!--         <div>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Notes</a>
+        </div>
+ -->
       </ul>
 
       <ul id="sidebarB" class="side-nav right-aligned fixed #1565c0 blue darken-3">
@@ -60,10 +61,9 @@
 		<div class="row">
 			<div id="infospace" class="col s10">
 				<ul id="buttontabs" class="tabs #42a5f5 blue lighten-1">
-        	<li class="tab col s1"><a class="white-text" href="#directions">Directions</a></li>
+        	<li class="tab col s1"><a class="white-text" href="#directions">Map</a></li>
         	<li class="tab col s1"><a class="white-text" href="#weather">Weather</a></li>
         	<li class="tab col s1"><a class="white-text" href="#information">Information</a></li>
-        	<li class="tab col s1"><a class="white-text" href="#notes">Notes</a></li>
       	</ul>
 			</div>
 			
@@ -109,9 +109,7 @@
     		<div id="wikiarticle" class="col s10 white-text #42a5f5 blue lighten-1">
     		</div>
     	</div>
-    	
-    	<div id="notes" class="col s10 #42a5f5 blue lighten-1"></div>
-	  
+    		  
 	</div>
 <!-- Hidden Icon Div -->
 <div class="row">
@@ -157,49 +155,75 @@
     </div>
   </div>
 <!--Footer Modal -->
-  <div id="modal1" class="modal bottom-sheet">
+<!--   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-      <div id="schedule" class="card-panel col s12 z-depth-4 #ffebee red lighten-5">
+      <div id="card-panel">
+
+        <form>
+
+        <h2>Notes <input type="text" id="noteInput">
+        <input type="submit" value="Add Note" id="addToNotes"></h2>
+
+        </form>
+        <div id="notes"></div>
+
+      </div>
+      </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div> -->
+  </div>
+      <!-- Schedule Modal -->
+          <div id="modal2" class="modal">
+            <div class="modal-content">
+              <div id="schedule" class="card-panel col s12 z-depth-4 #ffebee">
   
-        <h4><i class="small material-icons">assignment</i>Schedule and Notes</h4>
-        
-          <div id="card-panel">
-            <div id="scheduleCard" class="card-panel">
+                <h4><i class="small material-icons">assignment</i>Schedule</h4>
+                
+                  <div id="card-panel">
+                    <div id="scheduleCard" class="card-panel">
 
-              <form>
-                <input id="timePicker">
-                <input type="text" id="schedInput"> 
-                <a class="btn-floating btn-medium waves-effect waves-light red" type="submit" id="addToSched"><i class="material-icons">add</i></a>
+                      <form>
+                        <input id="timePicker">
+                        <input type="text" id="schedInput"> 
+                        <a class="btn-floating btn-medium waves-effect waves-light blue" type="submit" id="addToSched"><i class="material-icons">add</i></a>
 
-              </form>
-              <div id="sched">
+                      </form>
+                      <div id="sched">
 
-              </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                      <h4><i class="small material-icons">assignment</i>Notes</h4>
+                
+                    <div class="card-panel">
+
+                      <form>
+                        <input type="text" id="noteInput"> 
+                        <a class="btn-floating btn-medium waves-effect waves-light blue" type="submit" id="addToNotes"><i class="material-icons">add</i></a>
+
+                      </form>
+                      <div id="notes"></div>
+                    </div>
+
+                </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
-
-            <div id="noteCard" class="card-panel">
-              content
-            </div>
-          </div>
-          <div class="card-panel s2">
           </div>
         </div>
-            <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-    </div>
-  </div>
 
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-
   <script src="https://use.fontawesome.com/b2612f81a7.js"></script>
   <script type="text/javascript" src="assets/js/jquery.timepicker.min.js"></script>
   <script type="text/javascript" src="assets/js/schedule.js"></script>
-
+  <script type="text/javascript" src="assets/js/notes.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-
   <script>
     $(document).ready(function(){
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -790,15 +814,10 @@
     })(jQuery);
 
   </script>
+  
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClUkAANYUbEx1dI5uNBpXNrn8Ae4QAjNQ&callback=initMap">
   </script>
 
 </body>
-  
-
-
-
-	
-
 </html>

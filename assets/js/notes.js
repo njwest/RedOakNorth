@@ -9,26 +9,32 @@ $(function(){
         dataRef.push ({
             'note' : noteInput
         });
+
+        return false;
      });
+
+      dataRef.on('child_removed', function(child){
+        console.log(child);
+        $('#item-' + child.key()).empty();
+      });
 
     dataRef.on('child_added', function(child, prevChild){
 
         var addNote = $('<p>');
         addNote.append(" " + child.val().note);
+        addNote.attr('id', 'item-' + child.key());
 
 
         var noteClose = $("<button>");
         noteClose.attr("data-notes", noteCount);
-   noteClose.attr('data-key', child.key());
+        noteClose.attr('data-key', child.key());
 
-        noteClose.addClass("checkbox");
-        noteClose.append("X");
+        noteClose.addClass("checkbox btn-floating btn-small waves-effect waves-light blue");
+        noteClose.append("-");
         addNote = addNote.prepend(noteClose);
 
         $("#notes").append(addNote);
         $('#noteInput').val("");
-
-
 
         return false;
     });

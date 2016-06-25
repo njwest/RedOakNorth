@@ -1,3 +1,7 @@
+h4{
+  color: #fff;
+}
+
 div#infospace {
 	background-color: #42a5f5;
 }
@@ -7,35 +11,35 @@ header, main {
 }
 
 #sidebar {
+  color: #fff;
 	padding-left: 20px;
 	padding-right: 20px;
 }
 
 #sidebarB {
-	width: 15%;
+	width: 18%;
 }
 
 #header {
-	height: 100px;
+	height: 25px;
 }
 
 div#map {
 	height: 600px;
 	width: 100%;
-
 }
 
 div#wikiarticle {
 	width: 100%;
 }
 
-div#weather, #information, #notes {
+div#weather, #information{
 	height: 700px;
 }
 
 div#rightpanel {
 	height: 100%;
-	margin-top: 100px;
+	margin-top: 25px;
 	margin-bottom: 25px;
 	display: none;
 }
@@ -77,33 +81,45 @@ div#filler {
 
   /* label color */
 .input-field label {
-    color: #9e9e9e grey;
+    color: #c0c0c0  ;
 }
    /* label focus color */
 .input-field input[type=text]:focus + label {
-    color: #ffffff;
+    color: #fff;
 }
    /* label underline focus color */
 .input-field input[type=text]:focus {
+  color: #fff;
     border-bottom: 1px solid #ffffff;
     box-shadow: 0 1px 0 0 #ffffff;
 }
    /* valid color */
 .input-field input[type=text].valid {
+    color: #fff;
     border-bottom: 1px solid #ffffff;
     box-shadow: 0 1px 0 0 #ffffff;
 }
    /* invalid color */
 .input-field input[type=text].invalid {
+    color: #fff;
     border-bottom: 1px solid #ffffff;
     box-shadow: 0 1px 0 0 #ffffff;
 }
    /* icon prefix focus color */
 .input-field .prefix.active {
-    color: #ffffff;
+    color: #fff;
+}
+
+input#origin{
+  color: #fff;
+}
+
+input#destination{
+  color: #fff;
 }
 
 #empty, #fontA, #fontB, #fontC {
+  color: #fff;
 	height: 120px;
   	text-align: center;
 }
@@ -123,4 +139,38 @@ div#filler {
 
 div#notes {
   margin-top:10px;
+}
+
+#modal1{
+  background-color: inherit;
+}
+
+#modal2{
+  height: 75% !important;
+  background-color: inherit;
+}
+
+#schedule{
+  background-color: #2196F3;
+}
+
+.modal-footer{
+  color: #fff !important;
+  background-color: #2196F3 !important;
+}
+
+.modal-action{
+  color: #fff !important;
+}
+
+.btn{
+  color: #fff !important;
+}
+
+#noteInput{
+  color: #000;
+}
+
+#notes{
+  color: #000;
 }
